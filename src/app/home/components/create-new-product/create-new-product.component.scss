@@ -1,0 +1,126 @@
+//form
+
+
+.ContainerForm{
+  position: fixed;
+  overflow: auto;
+  top: 70px;
+  background: white;
+  width: 100%;
+  max-width: 600px;
+  height: 90vh;
+  padding: 20px 10px;
+  transform: translateX(-10000px);
+  transition: all 1s ease;
+  &.Active{
+    transform: translateX(0px);
+  }
+  .FormHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    h2{
+      font-size: 1.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      span{
+        color: #7E88C3;
+      }
+    }
+    img{
+      width: 30px;
+    }
+  }
+  form{
+    width: 94%;
+    .AddNewItem{
+      color: #7E88C3;
+      border: none;
+      background: #e5e8ff;
+      font-size: 1rem;
+      padding: 15px 10px;
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    h3{
+      color: #7C5DF9;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    .SimpleInput{
+      margin-bottom: 20px;
+      label{
+        display: block;
+        font-size: .9rem;
+        color: #7E88C3;
+        margin-bottom: 5px;
+      }
+      input, select{
+        width: 93%;
+        font-size: 1.2rem;
+        padding: 8px;
+        border: 1px solid #21125e61;
+        outline: none;
+        border-radius: 5px;
+        &.DateInput{
+          color: #7E88C3;
+        }
+      }
+      select{
+        width: 100%;
+        max-width: 530px;
+      }
+    }
+    .ElementTwo{
+      display: flex;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 95%;
+      div{
+        width: 40%;
+      }
+    }
+    .FooterForm{
+      position: absolute;
+      width: 100%;
+      left: 0px;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      box-shadow: 0px -2px 20px 1px rgba(193, 193, 193, .2);
+      button, input{
+        margin: 0px 0px 41px;
+        color: #7E88C3;
+        border: none;
+        background: #efeff5;
+        font-size: 1.1rem;
+        padding: 10px 15px;
+        border-radius: 25px;
+        font-size: .8rem;
+      }
+      .Draft{
+        background: black;
+      }
+      input{
+        color: white;
+        background-color: #7c5dfa;
+      }
+    }
+  }
+  @media (min-width: 1000px) {
+    top: 0px;
+    height: 100vh;
+    left: 71px;
+  }
+}
+.AddContainer{
+  animation: fadeIn 1s both;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+  } 

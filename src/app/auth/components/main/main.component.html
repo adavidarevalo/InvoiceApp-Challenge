@@ -1,0 +1,17 @@
+<div class='Container'>
+
+    <div class="HeaderAuth">
+        <button
+        (click)='changeAuth()'
+        [class.active]='auth'
+        >Login</button>
+        <button
+        (click)='changeAuth()'
+        [class.active]='!auth'
+        >Register</button>
+    </div>
+    <app-login *ngIf='auth; else register'></app-login>
+    <ng-template #register>
+        <app-register></app-register>
+    </ng-template>
+</div>

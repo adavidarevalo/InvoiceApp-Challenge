@@ -1,0 +1,12 @@
+<app-nabvar
+(NewElement)='ChangeNewProduct()'
+></app-nabvar>
+<app-card-element
+*ngFor='let itemContainer of Element'
+[itemContainer] = 'itemContainer'
+></app-card-element>
+<p *ngIf='Element.length < 1'>There are not elements yet...</p>
+<app-create-new-product 
+[ShowElement]='newProduct'
+(NewElement)='ChangeNewProduct()'
+></app-create-new-product>

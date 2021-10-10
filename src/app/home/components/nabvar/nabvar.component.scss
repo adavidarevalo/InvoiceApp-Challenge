@@ -1,0 +1,78 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 20px auto;
+    max-width: 710px;
+    .ElementCount{
+        h2{
+            font-size: 1.3rem;
+            margin: 0px;
+        }
+        p{
+            margin: 0px;
+            font-size: .9rem;
+        }
+    }
+    .ElementsSelect{
+        display: flex;
+        align-items: center;
+        position: relative;
+        .FilterContainer{
+            button{
+                background: none;
+                color: black;
+                img{
+                    margin-left: 10px;
+                    transform: rotate(0deg);
+                    transition: all ease-out .5s;
+                }
+                .rotate{
+                    transform: rotate(180deg);
+                }
+            }
+            .CheckboxContainer{
+                position: absolute;
+                transform: translateX(-1000%);
+                opacity: 0;
+                transition: all ease-out .5s;
+                background: white;
+                box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.2);
+                padding: 10px;
+                left: -15px;
+                div{
+                    margin-bottom: 7px;
+                }
+            }
+            .active{
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        button{
+            background: #7C5DFA;
+            border: none;
+            color: white;
+            display: flex;
+            font-size: 1rem;
+            padding: 10px 15px 10px 10px; 
+            border-radius: 50px;
+            align-items: center;
+            div{
+                background: white;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 10px;
+                img{
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+    }
+}

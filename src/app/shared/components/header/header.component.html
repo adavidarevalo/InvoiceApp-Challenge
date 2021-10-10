@@ -1,0 +1,27 @@
+<header>
+    <a to='/' class='LogoContainer'>
+        <div class="Container">
+          <img src='./assets/images/logo-desktop.svg' alt='Logo'/>
+          <div></div>
+        </div>
+    </a>
+    <div class="UserContainer">
+        <button
+        (click)="ChangeBackground()"
+        >
+            <img 
+            *ngIf='!BackgrondColor; else sunButton'
+            src='./assets/images/icon-moon.svg' 
+            alt='Moon'/>
+            <ng-template #sunButton>
+                <img
+                src='./assets/images/icon-sun.svg' 
+                alt='Sun'/>
+            </ng-template>
+        </button>
+        <img
+        class="Avatar" 
+        src='./assets/images/image-avatar.jpg' 
+        alt='Avatar'/>
+    </div>
+</header>

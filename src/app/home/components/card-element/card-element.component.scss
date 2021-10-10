@@ -1,0 +1,112 @@
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.Container{
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    max-width: 710px;
+    margin: 0 auto;
+    box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.2);
+    margin-bottom: 25px;
+    .ArrowRight{
+        display: none;
+    }
+    h3, p {
+        margin: 0px;
+    }
+    h3{
+        color: #7E88C3;
+        font-size: .9rem;
+        margin-bottom: 15px;
+        span{
+            color: black;
+        }
+    }
+    p{
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: black;
+    }
+    .Name{
+        display: none;
+    }
+    .Date, .Name{
+        color: #7E88C3;
+        font-size: .9rem;
+        margin-block: 5px;
+        letter-spacing: 0px;
+        font-weight: 200;
+    }
+    .NamePayment{
+        display: flex;
+        flex-direction: column;
+        p{
+            font-size: .8rem;
+            font-weight: 200;
+            color: #7E88C3;
+        }
+        button{
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #a9e9d25c;
+            p{
+                color: #7ad3b3;
+                display: flex;
+                align-items: center;
+                mat-icon{
+                    font-size: 20px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .active{
+            background: #ffc8775c;
+            p{
+                color: #ffc877;
+            }
+        }
+    }
+    @media (min-width: 500px) {
+        .ContainerDetails{
+            display: flex;
+            align-items: center;
+            width: 320px;
+            justify-content: inherit;
+            h3{
+                margin: 0px;
+            }
+        }
+    }
+    @media (min-width: 700px) {
+        padding: 15px 30px;
+        .ContainerDetails{
+            width: 410px;
+        }
+        .Name{
+            display: block;
+        }
+        .PersonName{
+            display: none;
+        }
+        .NamePayment{
+            flex-direction: row;
+            align-items: center;
+            button{
+                margin-right: 10px;
+            }
+        }
+        .ArrowRight{
+            display: block;
+        }
+    }
+}
