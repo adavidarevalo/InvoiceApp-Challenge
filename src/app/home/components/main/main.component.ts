@@ -19,7 +19,6 @@ export class MainComponent implements OnInit {
   ) {
     this.Element = this.cardService.returnElements()
     this.filterElement = this.Element
-    console.log('xxx ', this.filterElement.length)
   }
 
   ngOnInit(): void {
@@ -32,16 +31,14 @@ export class MainComponent implements OnInit {
 
 
   filterElements(element: Task[]){
+    this.filterContainer = []
+    this.filterElement = []
+    element.filter(item => item.completed === true && this.filterContainer.push(item.name))
     if(this.filterContainer.length === 0){
       this.filterElement = this.Element
     }
-    this.filterElement = []
-    this.filterContainer = []
-    element.filter(item => item.completed === true && this.filterContainer.push(item.name))
-
-    this.filterElement = this.Element.filter(item => item.state.includes(this.filterContainer.toString()))
-    console.log('saa ', this.filterContainer.toString())
-    console.log('sa ', this.filterElement)
+     for (var i = 0; i < this.filterContainer.length; i++) {
+      this.filterElement = [...this.filterElement, ...this.Element.filter(item => item.state === this.filterContainer[i])]
+    }
   }
-
 }
