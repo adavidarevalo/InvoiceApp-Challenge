@@ -8,11 +8,17 @@ import {Element, elementContainer} from '../../../models/element.model'
 export class CardElementComponent implements OnInit {
   @Input() itemContainer: Element = elementContainer;
   paymentButton: boolean = false
+  date: number = 0
 
-  constructor() { }
+  constructor() { 
+    this.numberTransform()
+  }
 
   ngOnInit(): void {
-    console.log('MMM ',this.itemContainer)
+  }
+  numberTransform(){
+    this.date = 0
+    this.date =  Number(this.itemContainer.Date)
   }
 
 }

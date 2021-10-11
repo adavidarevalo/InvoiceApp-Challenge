@@ -47,3 +47,9 @@ export const elementContainer = {
       }
     ]
   }
+
+export interface Task {
+  name: string,
+  completed: boolean,
+  color: string
+}

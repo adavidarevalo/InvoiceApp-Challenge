@@ -9,7 +9,7 @@ export class CardService {
   products: Element[] = [
     {
       id: 'HIJ',
-      state: 'valid',
+      state: 'paid',
       Address: 'Elemet',
       city: 'asdasdasd',
       postCode: 'asdasdasd',
@@ -33,7 +33,7 @@ export class CardService {
     },
     {
       id: 'DFG',
-      state: 'invalid',
+      state: 'pending',
       Address: 'Elemet 2',
       city: 'asdasdasd',
       postCode: 'asdasdasd',
@@ -57,7 +57,7 @@ export class CardService {
     },
     {
       id: 'ABC',
-      state: 'block',
+      state: 'draft',
       Address: 'Elemet',
       city: 'asdasdasd',
       postCode: 'asdasdasd',
@@ -76,6 +76,11 @@ export class CardService {
           itemName: 'asdasdasd',
           Qty: 0,
           Price: 0,
+        },
+        {
+          itemName: 'asdasdasd',
+          Qty: 0,
+          Price: 0,
         }
       ]
     }
@@ -83,6 +88,21 @@ export class CardService {
 
   returnElements(){
     return this.products
+  }
+
+  findId(Id: string){
+    return this.products.filter(item => item.id === Id)
+  }
+
+  delete(Id: string){
+    this.products = this.products.filter(item => item.id !== Id)
+  }
+  changeStatus(Id: string){
+    console.log('true babe')
+    this.products.filter(item => item.id === Id && (item.state = 'paid'))
+  }
+  add(element: Element){
+    this.products.push(element)
   }
 
   constructor() { }

@@ -1,21 +1,18 @@
-<a routerLink='id'>
+<a routerLink={{itemContainer.id}}>
     <div class="Container">
     <div class="ContainerDetails">
-        <h3>#<span>{{itemContainer.id}}</span></h3>
-        <p class='Date'>Due 18 Aug 2021</p>
-        <p class="Name">Jensen Huang</p>
+        <h3>#<span>{{itemContainer.id | uppercase}}</span></h3>
+        <p class='Date'>{{date |  date}}</p>
+        <p class="Name">{{itemContainer.ClientName}}</p>
         <p>$ 1,800.90</p>
     </div>
     <div class='NamePayment'>
-        <p class="PersonName">Jensen Huang</p>
-        <button [class.active]="paymentButton">
-            <p
-            *ngIf='!paymentButton; else preding'
-            ><mat-icon>check_circle_outline</mat-icon>Paid</p>
-            <ng-template #preding>
-                <p><mat-icon>cancel</mat-icon>Preding</p>
-            </ng-template>
-        </button>
+        <p class="PersonName">{{itemContainer.ClientName}}</p>
+        <div  class="Payment" [ngSwitch]="itemContainer.state">
+            <p class="paid" *ngSwitchCase="'paid'"><mat-icon>check_circle_outline</mat-icon>Paid</p>
+            <p class="pending" *ngSwitchCase="'pending'"><mat-icon>send</mat-icon>Preding</p>
+            <p class="draft" *ngSwitchCase="'draft'"><mat-icon>cancel</mat-icon>Draft</p>
+        </div>
         <img 
     class="ArrowRight"
     src='./assets/images/icon-arrow-right.svg' alt='Arrow'/>

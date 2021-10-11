@@ -8,7 +8,7 @@ class="ContainerForm"
     src='./assets/images/times-circle-solid.svg' 
     alt='close'/>
 </div>
-    <form [formGroup]='formCreate' (submit)='send()' errorTailor>
+    <form [formGroup]='formCreate' (submit)='send("pending")' errorTailor>
         <h3>Bill From</h3>
         <div class="SimpleInput">
             <label>Street Address</label>
@@ -56,10 +56,6 @@ class="ContainerForm"
             <input type='text' id='ClientCountry' formControlName='ClientCountry' />
         </div>
         <div class="SimpleInput">
-            <label>Country</label>
-            <input type='text' id='ClientCountry' formControlName='ClientCountry' />
-        </div>
-        <div class="SimpleInput">
             <label>Invoice Date</label>
             <input 
             class="DateInput"
@@ -101,19 +97,22 @@ class="ContainerForm"
                 src='./assets/images/icon-delete.svg' alt='Delete'/>              
             </div>
         </div>
-        <p>{{ItemList[0].itemName}}</p>
         <button
         type='button'
         (click)='AddNewItem()' 
         class="AddNewItem">+Add New Item</button>
+        <p 
+        class="error"
+        *ngIf='error'>All fields are required</p>
         <div class="FooterForm">
             <button
             (click)='closeForm()' 
             >Discard</button>
             <button
             class="Draft"
+            (click)='send("draft")'
             >Save as Draft</button>
-            <input type='submit' value="Send" [disabled]='formCreate.invalid'>
+            <input type='submit' value="Send">
         </div>
     </form>
 

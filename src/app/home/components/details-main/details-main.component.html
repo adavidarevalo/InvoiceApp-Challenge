@@ -1,64 +1,84 @@
-<a routerLink='/'><img src='../../../../assets/images/icon-arrow-left.svg'/>Go back</a>
-
-<div>
+<section>
+<a 
+(click)='Back()'
+><img src='../../../../assets/images/icon-arrow-left.svg'/>Go back</a>
+<div class="StatusContainer">
     <div>
        <p>Status</p>
-       <div>Pending</div>
+       <p>Pending</p>
     </div>
-    <div>
+    <div class="Modification">
         <button>Edit</button>
-        <button>Delete</button>
-        <button>Mark As Paid</button>
+        <button class="Delete"
+        (click)='Delete()'
+        >Delete</button>
+        <button 
+        (click)='ChangeStatus()'
+        *ngIf='element[0].state !== "paid"'
+        class="Paid">Mark As Paid</button>
     </div>
 </div>
-<div>
+<div class="Container">
     <div class="Header">
         <div>
-            <h2>#<span>XM9141</span></h2>
-            <p>Grapic Desing</p>
+            <h2>#<span>{{element[0].id}}</span></h2>
+            <p>{{element[0].description}}</p>
         </div>
         <div>
-            <p>19 Union Terrace</p>
-            <p>London</p>
-            <p>19 Union Terrace</p>
-            <p>United Kindom</p>
+            <p>{{element[0].Address}}</p>
+            <p>{{element[0].city}}</p>
+            <p>{{element[0].postCode}}</p>
+            <p>{{element[0].country}}</p>
         </div>
     </div>
     <div class="ContainerInfo">
         <div>
             <div>
                 <h3>Invoice Date</h3>
-                <p>18 Aug 2021</p>
+                <p>{{element[0].Date}}</p>
             </div>
             <div>
                 <h3>Payment Due</h3>
-                <p>18 Aug 2021</p>
+                <p>{{element[0].Date}}</p>
             </div>
         </div>
         <div>
             <h3>Bill To</h3>
-            <p>Jensen Huang</p>
-            <p>106 Kendell Street</p>
-            <p>Sharrington</p>
-            <p>NR245WQ</p>
+            <p>{{element[0].ClientName}}</p>
+            <ul>
+                <li>{{element[0].ClientAddress}}</li>
+                <li>{{element[0].ClientCity}}</li>
+                <li>{{element[0].ClientCode}}</li>
+                <li>{{element[0].ClientCountry}}</li>
+            </ul>
         </div>
         <div>
             <h3>Sent To</h3>
-            <p>jensenh@gmail.com</p>
+            <p>{{element[0].ClientEmail}}</p>
         </div>
     </div>
-    <div>
-        <div>
+    <div 
+    class="PayInformation"
+    *ngFor='let item of element[0].ItemList'
+    >
+        <div class="Elements">
             <div>
-                <h3>Brand Guidelines</h3>
-                <p>1x$ 1,800.90</p>
+                <h3>{{item.itemName}}</h3>
+                <p>{{item.Qty}}x$ {{item.Price}}</p>
             </div>
-            <p>$ 1,800.90</p>
+            <p>$ {{item.Qty * item.Price}}</p>
         </div>
-        <div>
+        <div class="total">
             <p>Grand Total</p>
             <p>$ 1,800.90</p>
         </div>
     </div>
-
+</div>
+</section>
+<div class="Footer">
+    <button>Edit</button>
+    <button  
+    (click)='Delete()'
+    class="Delete">Delete</button>
+    <button class="Paid">Mark As Paid</button>
 </div>

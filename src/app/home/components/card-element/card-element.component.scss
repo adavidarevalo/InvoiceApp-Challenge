@@ -15,6 +15,7 @@ a{
     box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 25px;
     .ArrowRight{
+        margin-left: 10px;
         display: none;
     }
     h3, p {
@@ -52,27 +53,28 @@ a{
             font-weight: 200;
             color: #7E88C3;
         }
-        button{
-            border: none;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            font-size: 1rem;
-            background: #a9e9d25c;
+        .Payment{
             p{
-                color: #7ad3b3;
+                padding: 5px;
+                width: 80px;
                 display: flex;
                 align-items: center;
-                mat-icon{
-                    font-size: 20px;
-                    margin-left: 10px;
+                justify-content: space-around;
+                border-radius: 5px;
+                font-size: .8rem;
+                font-weight: 400;
+                &.paid{
+                    background: #99f38e42;
+                    color: #15bb00bf;
                 }
-            }
-        }
-        .active{
-            background: #ffc8775c;
-            p{
-                color: #ffc877;
+                &.pending{
+                    background: #f9c97254;
+                    color: #ffac15;
+                }
+                &.draft{
+                    background: #c7c7c752;
+                    color: black;
+                }
             }
         }
     }

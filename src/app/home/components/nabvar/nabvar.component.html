@@ -1,7 +1,7 @@
 <nav>
     <div class="ElementCount">
         <h2>Invoices</h2>
-        <p>6 Invoices</p>
+        <p>{{count}} Invoices</p>
     </div>
     <div class="ElementsSelect">
         <div class="FilterContainer">
@@ -9,17 +9,12 @@
             (click)='changePanel()'
             >Filter <img [class.rotate]="panelOpenState" src='./assets/images/icon-arrow-down.svg' alt='Arrow Down'/></button>
             <div class='CheckboxContainer' [class.active]="panelOpenState">
-                <div>
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1">Paid</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
-                    <label for="vehicle2">Pending</label>
-                </div>
-                <div>
-                    <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
-                    <label for="vehicle3">Draft</label><br>
+                <div *ngFor="let subtask of task">
+                    <mat-checkbox [(ngModel)]="subtask.completed"
+                                [color]="subtask.color"
+                                (ngModelChange)="updateAllComplete()">
+                    {{subtask.name}}
+                  </mat-checkbox>
                 </div>
             </div>
         </div>
