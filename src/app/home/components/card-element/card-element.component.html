@@ -1,5 +1,5 @@
 <a routerLink={{itemContainer.id}}>
-    <div class="Container">
+    <div class="Container" [class.changeBackground]='colorBackground'>
     <div class="ContainerDetails">
         <h3>#<span>{{itemContainer.id | uppercase}}</span></h3>
         <p class='Date'>{{date |  date}}</p>

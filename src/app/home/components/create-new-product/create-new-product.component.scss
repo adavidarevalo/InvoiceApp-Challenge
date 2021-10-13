@@ -1,6 +1,4 @@
 //form
-
-
 .ContainerForm{
   position: fixed;
   overflow: auto;
@@ -29,6 +27,7 @@
     }
     img{
       width: 30px;
+      cursor: pointer;
     }
   }
   form{
@@ -42,6 +41,7 @@
       width: 100%;
       border-radius: 5px;
       margin-bottom: 10px;
+      cursor: pointer;
     }
     h3{
       color: #7C5DF9;
@@ -100,6 +100,7 @@
         padding: 10px 15px;
         border-radius: 25px;
         font-size: .8rem;
+        cursor: pointer;
       }
       .Draft{
         background: black;
@@ -114,6 +115,17 @@
     top: 0px;
     height: 100vh;
     left: 71px;
+    form{
+      .FooterForm{
+        justify-content: flex-end;
+        button, input{
+          margin-inline: 15px;
+        }
+        input{
+          margin-right: 50px;
+        }
+      }
+    }
   }
 }
 .AddContainer{
@@ -128,4 +140,42 @@
 .error{
   text-align: center;
   color: rgba(223, 0, 0, 0.829);
+}
+.changeBackground{
+  background: #141625 ;
+  .FormHeader{
+    h2{
+      color: white;
+    }
+    img{
+      filter: invert(1);
+    }
+  }
+  form{
+    .SimpleInput{
+      input, select{
+        background: #1F2139;
+        color: white;
+      }
+    }
+    .AddNewItem{
+      background: #1F2139;
+      color: white;
+    }
+    .FooterForm{
+      background: #1F2139;
+      box-shadow:none;
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background: #141625 ;
+  }
+  &::-webkit-scrollbar{
+    width: 10px;
+    background-color: yellow;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: #7C5DFA; 
+    border-radius: 20px;
+}
 }

@@ -1,10 +1,13 @@
 section{
+    $firstColor: black;
     background: #F8F8FB;
     padding-block: 30px;
     padding-inline: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 100px;
+    transition: all 1s ease;
     a{
         width: 100%;
         max-width: 600px;
@@ -12,6 +15,7 @@ section{
         color: black;
         font-weight: 500;
         margin: 0 auto;
+        cursor: pointer;
         img{
             margin-right: 10px;
         }
@@ -23,9 +27,11 @@ section{
         margin: 20px auto;
         width: 91%;
         max-width: 600px;
+        transition: all 1s ease;
         div{
             display: flex;
             justify-content: space-between;
+            align-items: center;
             p{
                 font-size: 1rem;
                 margin: 0px;
@@ -45,6 +51,7 @@ section{
         margin: 0 auto;
         border-radius: 10px;
         padding: 15px;
+        transition: all 1s ease;
         .Header{
             display: flex;
             flex-wrap: wrap;
@@ -57,6 +64,7 @@ section{
                     margin: 0px;
                     color: rgb(126, 136, 195);
                     span{
+                        text-transform: uppercase;
                         color: black;
                     }
                 }
@@ -99,6 +107,7 @@ section{
             background-color: rgb(248, 248, 251);
             border-radius: 10px;
             width: 100%;
+            transition: all 1s ease;
             .Elements{
                 padding: 15px;
                 display: flex;
@@ -157,6 +166,9 @@ section{
             }
         }
     }
+    @media (min-width: 1000px) {
+        padding-top: 30px;
+    }
 }
 button{
     margin: 0px;
@@ -169,11 +181,11 @@ button{
     cursor: pointer;
 }
 .Delete{
-    background: #ff0000cf;
+    background: #ff0000cf !important;
     color: white;
 } 
 .Paid{
-    background: #7558ED;
+    background: #7558ED !important;
     color: white;
 }
 .Footer{
@@ -194,5 +206,63 @@ button{
     }
     @media (min-width: 600px) {
         display: none;
+    }
+}
+.paid, .pending, .draft{
+    padding: 5px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    font-size: .8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 15px !important;
+    &.paid{
+        background: #99f38e42;
+        color: #15bb00bf;
+    }
+    &.pending{
+        background: #f9c97254;
+        color: #ffac15;
+    }
+    &.draft{
+        background: #c7c7c752;
+        color: black;
+    }
+}
+.changeBackground{
+    background: #141625;
+    a{
+        color: white;
+    }
+    .StatusContainer{
+        background: #1F2139;
+        color: white;
+        div > button{
+            background: #252945;
+            color: white;
+        }
+    }
+    .Container{
+        background: #1F2139 !important;
+        .Header{
+            h2 > span{
+                color: white !important;
+            }
+        }
+    }
+    .ContainerInfo > div {
+        h3{
+            color: rgb(201, 201, 201) !important;
+        }
+        p{
+            color: white !important;
+        }
+    }
+    .PayInformation{
+        background: #252945 !important;
+        color: white !important;
     }
 }

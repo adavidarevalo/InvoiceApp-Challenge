@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChangeBackgroundService } from '../../../core/service/change-background.service'
 
 @Component({
   selector: 'app-header',
@@ -8,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   BackgrondColor: boolean = false
 
-  constructor() { }
+  constructor(
+    private changeBackgroundService: ChangeBackgroundService
+  ) { }
 
   ngOnInit(): void {
   }
 
   ChangeBackground(){
     this.BackgrondColor = !this.BackgrondColor
+    this.changeBackgroundService.changeBackground()
+    console.log('yes baby')
   }
 
 }

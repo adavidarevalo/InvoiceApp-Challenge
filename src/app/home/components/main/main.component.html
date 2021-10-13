@@ -1,15 +1,16 @@
-<app-nabvar
-(NewElement)='ChangeNewProduct()'
-(NavFilter)='filterElements($event)'
-[count]='filterElement.length'
-></app-nabvar>
-<app-card-element
-*ngFor='let itemContainer of filterElement'
-[itemContainer] = 'itemContainer'
->
-</app-card-element>
-<p *ngIf='Element.length < 1'>There are not elements yet...</p>
-<app-create-new-product 
-[ShowElement]='newProduct'
-(NewElement)='ChangeNewProduct()'
-></app-create-new-product>
+<section [class.changeBackground]='colorBackground'>
+    <app-nabvar
+    (NewElement)='ChangeNewProduct()'
+    (NavFilter)='filterElements($event)'
+    [count]='filterElement.length'
+    ></app-nabvar>
+    <app-card-element
+    *ngFor='let itemContainer of filterElement'
+    [itemContainer] = 'itemContainer'
+    ></app-card-element>
+    <p *ngIf='Element.length < 1'>There are not elements yet...</p>
+    <app-create-new-product 
+    [ShowElement]='newProduct'
+    (NewElement)='ChangeNewProduct()'
+    ></app-create-new-product>
+</section>

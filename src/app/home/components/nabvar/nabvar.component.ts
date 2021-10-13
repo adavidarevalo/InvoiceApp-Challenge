@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import {Task} from '../../../models/element.model'
+import { Subscription } from 'rxjs'
+import { ChangeBackgroundService } from '../../../core/service/change-background.service'
 
 @Component({
   selector: 'app-nabvar',
@@ -9,13 +11,21 @@ import {Task} from '../../../models/element.model'
 
 
 
-export class NabvarComponent implements OnInit {
+export class NabvarComponent implements OnInit, OnDestroy {
   panelOpenState = false;
   @Output() NewElement: EventEmitter<boolean> = new EventEmitter();
   @Output() NavFilter: EventEmitter<Task[]> = new EventEmitter()
   @Input() count: number = 0
-  constructor() { 
-    console.log('count ', this.count)
+  colorBackground: boolean = false
+  elementSubscribe$: Subscription
+
+  constructor(
+    private changeBackgroundService: ChangeBackgroundService
+  ) { 
+    this.elementSubscribe$ = this.changeBackgroundService.Background$
+    .subscribe(item => {
+      this.colorBackground = item
+    })
   }
 
   ngOnInit(): void {
@@ -43,6 +53,8 @@ export class NabvarComponent implements OnInit {
     console.log('a ', this.task)
     this.NavFilter.emit(this.task);
   }
-
+  ngOnDestroy() {
+    this.elementSubscribe$.unsubscribe()
+  }
 }
 

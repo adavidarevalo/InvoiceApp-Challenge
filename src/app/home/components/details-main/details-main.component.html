@@ -1,14 +1,16 @@
-<section>
+<section [class.changeBackground]='colorBackground'>
 <a 
 (click)='Back()'
 ><img src='../../../../assets/images/icon-arrow-left.svg'/>Go back</a>
 <div class="StatusContainer">
     <div>
        <p>Status</p>
-       <p>Pending</p>
+       <p [class]='element[0].state'>{{element[0].state}}</p>
     </div>
     <div class="Modification">
-        <button>Edit</button>
+        <button
+        (click)='ChangeEdit()'
+        >Edit</button>
         <button class="Delete"
         (click)='Delete()'
         >Delete</button>
@@ -68,10 +70,10 @@
             </div>
             <p>$ {{item.Qty * item.Price}}</p>
         </div>
-        <div class="total">
-            <p>Grand Total</p>
-            <p>$ 1,800.90</p>
-        </div>
+    </div>
+    <div class="total">
+        <p>Grand Total</p>
+        <p>$ 1,800.90</p>
     </div>
 </div>
 </section>
@@ -82,3 +84,9 @@
     class="Delete">Delete</button>
     <button class="Paid">Mark As Paid</button>
 </div>
+<app-create-new-product
+[ShowElement]='editContainer'
+[edit]='element'
+(NewElement)='ChangeEdit()'
+>
+</app-create-new-product>

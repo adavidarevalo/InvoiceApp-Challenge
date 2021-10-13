@@ -2,6 +2,9 @@ header{
     background-color: #373B53;
     display: flex;
     justify-content:space-between;
+    position: fixed;
+    width: 100%;
+    top: 0px;
     a{
         .Container{
             background-color: #7c5dfa;
@@ -39,6 +42,7 @@ header{
             border: none;
             border-right: 1px solid gray;
             padding-right: 10px;
+            cursor: pointer;
         }
         .Avatar{
             width: 50px;

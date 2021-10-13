@@ -10,8 +10,10 @@ export class ChangeBackgroundService {
 
   constructor() { }
   Background$ = this.BC.asObservable()
+
   changeBackground(){
     this.BackgroundCont = !this.BackgroundCont
     this.BC.next(this.BackgroundCont)
+    console.log('change background')
   } 
 }

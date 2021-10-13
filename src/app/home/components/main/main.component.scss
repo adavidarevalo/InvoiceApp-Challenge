@@ -1,0 +1,22 @@
+section{
+    background: #F8F8FB;
+    height: 88vh;
+    transition: all 1s ease;
+    @media (max-width: 1000px) {
+        padding-top: 75px;
+    }
+    @media (min-width: 1000px) {
+        height: 100vh;
+    }
+    p{
+        text-align: center;
+        font-size: 1rem;
+        margin-block: 80px;
+    }
+}
+.changeBackground{
+    background: #141625;
+    p{
+        color: white;
+    }
+}

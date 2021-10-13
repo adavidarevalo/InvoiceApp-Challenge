@@ -104,6 +104,11 @@ export class CardService {
   add(element: Element){
     this.products.push(element)
   }
+  edit(element: Element){
+    this.delete(element.id)
+    this.add(element)
+
+  }
 
   constructor() { }
 }

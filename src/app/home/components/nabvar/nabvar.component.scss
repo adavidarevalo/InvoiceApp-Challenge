@@ -3,8 +3,9 @@ nav{
     align-items: center;
     justify-content: space-between;
     width: 90%;
-    margin: 20px auto;
+    margin: 0px auto;
     max-width: 710px;
+    padding-block: 20px;
     .ElementCount{
         h2{
             font-size: 1.3rem;
@@ -73,6 +74,16 @@ nav{
                     height: 10px;
                 }
             }
+        }
+    }
+}
+.changeBackground{
+    color: white;
+    .ElementsSelect{
+        .FilterContainer{
+            button{
+                color: white;
+            } 
         }
     }
 }
