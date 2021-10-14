@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router' 
+import { ActivatedRoute, Params } from '@angular/router'
 import { CardService } from '../../../core/service/card.service'
 import {Element} from '../../../models/element.model'
 import { Location } from '@angular/common'
 import { ChangeBackgroundService } from '../../../core/service/change-background.service'
 import { Subscription } from 'rxjs';
-
+import { PlusAllCardsService }  from "../../../core/service/plus-all-cards.service"
 
 @Component({
   selector: 'app-details-main',
@@ -17,23 +17,26 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
   colorBackground: boolean = false
   elementSubscribe$: Subscription;
   editContainer: boolean = false
+  totalPrice: number= 0
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private cardService: CardService,
     private route: Location,
-    private changeBackgroundService: ChangeBackgroundService
+    private changeBackgroundService: ChangeBackgroundService,
+    private plusAllCardsService: PlusAllCardsService
   ) {
     this.elementSubscribe$ = this.changeBackgroundService.Background$
     .subscribe(item => {
       this.colorBackground = item
-      console.log('yes ')
     })
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params)=>{
       this.element = this.cardService.findId(params.id)
+      console.log("XXX ", this.element[0].ItemList)
+      this.totalPrice = this.plusAllCardsService.plusAllCards(this.element[0].ItemList)
     })
   }
 
@@ -45,7 +48,6 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
     this.route.back()
   }
   ChangeStatus(){
-    console.log('change')
     this.cardService.changeStatus(this.element[0].id)
   }
   ChangeEdit(){
@@ -54,6 +56,9 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     console.log('Destroy')
     this.elementSubscribe$.unsubscribe()
+  }
+  ChangeElement(NewItem : Element ){
+    this.element = NewItem
   }
 
 }

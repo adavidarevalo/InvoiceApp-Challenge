@@ -8,6 +8,7 @@ section{
     justify-content: center;
     padding-top: 100px;
     transition: all 1s ease;
+    min-height: 85vh;
     a{
         width: 100%;
         max-width: 600px;
@@ -103,9 +104,10 @@ section{
                 }
             }
         }
+        .PaymentContainer{
+          background-color: rgb(248, 248, 251);
+          border-radius: 10px;
         .PayInformation{
-            background-color: rgb(248, 248, 251);
-            border-radius: 10px;
             width: 100%;
             transition: all 1s ease;
             .Elements{
@@ -132,8 +134,8 @@ section{
                     }
                 }
             }
+          }
             .total{
-                width: 91%;
                 background: black;
                 color: white;
                 border-bottom-left-radius: 10px;
@@ -145,7 +147,7 @@ section{
                 font-size: 1rem;
                 p:last-child{
                     font-size: 1.1rem;
-                    font-weight: 600;
+                    font-weight:500;
                 }
             }
         }
@@ -168,6 +170,7 @@ section{
     }
     @media (min-width: 1000px) {
         padding-top: 30px;
+        min-height: 93.5vh;
     }
 }
 button{
@@ -183,7 +186,7 @@ button{
 .Delete{
     background: #ff0000cf !important;
     color: white;
-} 
+}
 .Paid{
     background: #7558ED !important;
     color: white;

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import {Element, elementContainer} from '../../../models/element.model'
 import { Subscription } from 'rxjs'
 import { ChangeBackgroundService } from '../../../core/service/change-background.service'
+import { PlusAllCardsService } from "../../../core/service/plus-all-cards.service"
 
 @Component({
   selector: 'app-card-element',
@@ -14,10 +15,12 @@ export class CardElementComponent implements OnInit, OnDestroy {
   date: number = 0
   colorBackground: boolean = false
   elementSubscribe$: Subscription;
+  totalPrice: number = 0
 
   constructor(
-    private changeBackgroundService: ChangeBackgroundService
-  ) { 
+    private changeBackgroundService: ChangeBackgroundService,
+    private plusAllCardsService: PlusAllCardsService
+  ) {
     this.numberTransform()
     this.elementSubscribe$ = this.changeBackgroundService.Background$
     .subscribe(item => {
@@ -26,6 +29,7 @@ export class CardElementComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.totalPrice = this.plusAllCardsService.plusAllCards(this.itemContainer.ItemList)
   }
   numberTransform(){
     this.date = 0

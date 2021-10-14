@@ -1,21 +1,25 @@
 <a routerLink={{itemContainer.id}}>
-    <div class="Container" [class.changeBackground]='colorBackground'>
+  <div class="Container" [class.changeBackground]='colorBackground'>
     <div class="ContainerDetails">
-        <h3>#<span>{{itemContainer.id | uppercase}}</span></h3>
-        <p class='Date'>{{date |  date}}</p>
-        <p class="Name">{{itemContainer.ClientName}}</p>
-        <p>$ 1,800.90</p>
+      <h3>#<span>{{itemContainer.id | uppercase}}</span></h3>
+      <p class='Date'>{{date | date}}</p>
+      <p class="Name">{{itemContainer.ClientName}}</p>
+      <p>{{totalPrice | currency}}</p>
     </div>
     <div class='NamePayment'>
-        <p class="PersonName">{{itemContainer.ClientName}}</p>
-        <div  class="Payment" [ngSwitch]="itemContainer.state">
-            <p class="paid" *ngSwitchCase="'paid'"><mat-icon>check_circle_outline</mat-icon>Paid</p>
-            <p class="pending" *ngSwitchCase="'pending'"><mat-icon>send</mat-icon>Preding</p>
-            <p class="draft" *ngSwitchCase="'draft'"><mat-icon>cancel</mat-icon>Draft</p>
-        </div>
-        <img 
-    class="ArrowRight"
-    src='./assets/images/icon-arrow-right.svg' alt='Arrow'/>
+      <p class="PersonName">{{itemContainer.ClientName}}</p>
+      <div class="Payment" [ngSwitch]="itemContainer.state">
+        <p class="paid" *ngSwitchCase="'paid'">
+          <mat-icon>check_circle_outline</mat-icon>Paid
+        </p>
+        <p class="pending" *ngSwitchCase="'pending'">
+          <mat-icon>send</mat-icon>Preding
+        </p>
+        <p class="draft" *ngSwitchCase="'draft'">
+          <mat-icon>cancel</mat-icon>Draft
+        </p>
+      </div>
+      <img class="ArrowRight" src='./assets/images/icon-arrow-right.svg' alt='Arrow' />
     </div>
-    </div>
+  </div>
 </a>

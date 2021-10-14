@@ -2,7 +2,7 @@ export interface ItemList {
     itemName: string,
     Qty: number,
     Price: number,
-} 
+}
 
 export interface Element {
     id:string,

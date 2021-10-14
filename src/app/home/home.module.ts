@@ -11,7 +11,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {ErrorTailorModule} from '@ngneat/error-tailor';
 import { DetailsMainComponent } from './components/details-main/details-main.component';
 
-
 @NgModule({
   declarations: [
     MainComponent,
@@ -30,7 +29,7 @@ import { DetailsMainComponent } from './components/details-main/details-main.com
       errors: {
         useValue: {
           required: 'This field is required',
-          minlength: ({ requiredLength, actualLength }) => 
+          minlength: ({ requiredLength, actualLength }) =>
                       `Expect ${requiredLength} but got ${actualLength}`,
           invalidAddress: error => `Address isn't valid`
         }

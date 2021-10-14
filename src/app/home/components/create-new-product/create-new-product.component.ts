@@ -17,6 +17,7 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
   @Input() ShowElement: boolean = false;
   @Input() edit: Element[] | null= null;
   @Output() NewElement: EventEmitter<boolean> = new EventEmitter();
+  @Output() SendChanges: EventEmitter<Element> = new EventEmitter()
   id: string = ''
   error: boolean = false
   colorBackground: boolean = false
@@ -57,7 +58,7 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
       Date: [this.edit ? this.edit[0].Date :'', [Validators.required]],
       PayTerms: [this.edit ? this.edit[0].PayTerms :'', [Validators.required]],
       description: [this.edit ? this.edit[0].description :'', [Validators.required]]
-    }) 
+    })
     if(this.edit){
       this.ItemList = this.edit[0].ItemList ? this.edit[0].ItemList : this.ItemList
     }
@@ -105,6 +106,7 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
       this.formCreate.value.id = this.edit[0].id
       this.formCreate.value.ItemList = this.ItemList
       this.cardService.edit(this.formCreate.value)
+      this.SendChanges.emit(this.formCreate.value);
       this.closeForm()
     } else if(!this.error){
       this.formCreate.value.id = this.id
