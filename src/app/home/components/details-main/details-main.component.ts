@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router'
+import { ActivatedRoute, Params, Router } from '@angular/router'
 import { CardService } from '../../../core/service/card.service'
 import {Element} from '../../../models/element.model'
 import { Location } from '@angular/common'
@@ -24,7 +24,8 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
     private cardService: CardService,
     private route: Location,
     private changeBackgroundService: ChangeBackgroundService,
-    private plusAllCardsService: PlusAllCardsService
+    private plusAllCardsService: PlusAllCardsService,
+    private router: Router
   ) {
     this.elementSubscribe$ = this.changeBackgroundService.Background$
     .subscribe(item => {
@@ -35,9 +36,11 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params)=>{
       this.element = this.cardService.findId(params.id)
-      console.log("XXX ", this.element[0].ItemList)
       this.totalPrice = this.plusAllCardsService.plusAllCards(this.element[0].ItemList)
     })
+    if(this.element.length === 0){
+      this.router.navigate(['**']);
+    }
   }
 
   Delete(){
@@ -54,7 +57,6 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
     this.editContainer = !this.editContainer
   }
   ngOnDestroy() {
-    console.log('Destroy')
     this.elementSubscribe$.unsubscribe()
   }
   ChangeElement(NewItem : Element ){
