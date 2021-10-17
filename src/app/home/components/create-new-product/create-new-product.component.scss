@@ -50,37 +50,17 @@
     }
     .SimpleInput{
       margin-bottom: 20px;
-      label{
-        display: block;
-        font-size: .9rem;
-        color: #7E88C3;
-        margin-bottom: 5px;
-      }
-      input, select{
-        width: 93%;
-        font-size: 1.2rem;
-        padding: 8px;
-        border: 1px solid #21125e61;
-        outline: none;
-        border-radius: 5px;
-        &.DateInput{
-          color: #7E88C3;
-        }
-      }
-      select{
-        width: 100%;
-        max-width: 530px;
-      }
+      width: 100%;
     }
     .ElementTwo{
-      display: flex;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 95%;
-      div{
-        width: 40%;
-      }
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 20%;
+    }
+    .ElementThree{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 10%;
     }
     .FooterForm{
       position: absolute;

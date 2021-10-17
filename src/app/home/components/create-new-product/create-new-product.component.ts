@@ -44,24 +44,11 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.changeId()
-    this.formCreate = this.formBuilder.group({
-      Address: [this.edit ? this.edit[0].Address :'', [Validators.required]],
-      city: [this.edit ? this.edit[0].city :'', [Validators.required]],
-      postCode: [this.edit ? this.edit[0].postCode :'', [Validators.required]],
-      country: [this.edit ? this.edit[0].country :'', [Validators.required]],
-      ClientName: [this.edit ? this.edit[0].ClientName :'', [Validators.required]],
-      ClientEmail: [this.edit ? this.edit[0].ClientEmail :'', [Validators.required, Validators.email]],
-      ClientAddress: [this.edit ? this.edit[0].ClientAddress :'', [Validators.required]],
-      ClientCity: [this.edit ? this.edit[0].ClientCity :'', [Validators.required]],
-      ClientCode: [this.edit ? this.edit[0].ClientCode :'', [Validators.required]],
-      ClientCountry: [this.edit ? this.edit[0].ClientCountry :'', [Validators.required]],
-      Date: [this.edit ? this.edit[0].Date :'', [Validators.required]],
-      PayTerms: [this.edit ? this.edit[0].PayTerms :'', [Validators.required]],
-      description: [this.edit ? this.edit[0].description :'', [Validators.required]]
-    })
+    this.formCreate = this.formBuilder.group(this.formContainer())
     if(this.edit){
       this.ItemList = this.edit[0].ItemList ? this.edit[0].ItemList : this.ItemList
     }
+    this.element()
   }
   generateId(){
     if(this.edit){
@@ -80,10 +67,10 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
     this.createNew()
   }
   closeForm(){
+    this.formCreate.reset()
     this.NewElement.emit(false);
     if(!this.edit){
       this.changeId()
-      this.formCreate.reset()
     }
   }
   changeId(){
@@ -118,4 +105,30 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.elementSubscribe$.unsubscribe()
   }
+  Element(name: string){
+    return `formCreate.controls.${name}.touched && formCreate.controls.${name}.invalid`
+  }
+  element(){
+    console.log('ew ', this.formCreate.status === 'VALID')
+    console.log('xxx ', this.ItemList[0].itemName)
+  }
+  formContainer(){
+    return {
+      Address: [this.edit ? this.edit[0].Address :'', [Validators.required]],
+      city: [this.edit ? this.edit[0].city :'', [Validators.required]],
+      postCode: [this.edit ? this.edit[0].postCode :'', [Validators.required]],
+      country: [this.edit ? this.edit[0].country :'', [Validators.required]],
+      ClientName: [this.edit ? this.edit[0].ClientName :'', [Validators.required]],
+      ClientEmail: [this.edit ? this.edit[0].ClientEmail :'', [Validators.required, Validators.email]],
+      ClientAddress: [this.edit ? this.edit[0].ClientAddress :'', [Validators.required]],
+      ClientCity: [this.edit ? this.edit[0].ClientCity :'', [Validators.required]],
+      ClientCode: [this.edit ? this.edit[0].ClientCode :'', [Validators.required]],
+      ClientCountry: [this.edit ? this.edit[0].ClientCountry :'', [Validators.required]],
+      Date: [this.edit ? this.edit[0].Date :'', [Validators.required]],
+      PayTerms: [this.edit ? this.edit[0].PayTerms :'', [Validators.required]],
+      description: [this.edit ? this.edit[0].description :'', [Validators.required]]
+    }
+  }
+
+
 }

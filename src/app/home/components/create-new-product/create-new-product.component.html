@@ -1,89 +1,126 @@
 <div class="ContainerForm" [class.Active]='ShowElement' [class.changeBackground]='colorBackground'>
   <div class="FormHeader">
-    <h2>New <span>#</span>{{id}}</h2>
+    <h2 *ngIf='!edit; else OnlyId'>New <span>#</span>{{id}}</h2>
+    <ng-template #OnlyId>
+      <h2 *ngIf='edit'><span>#</span>{{id}}</h2>
+    </ng-template>
     <img (click)='closeForm()' src='./assets/images/times-circle-solid.svg' alt='close' />
   </div>
-  <form [formGroup]='formCreate' (submit)='send("pending")' errorTailor>
+  <form [formGroup]='formCreate' (submit)='send("pending")'>
     <h3>Bill From</h3>
-    <div class="SimpleInput">
-      <label>Street Address</label>
-      <input type='text' id='Address' formControlName='Address' />
-    </div>
+      <mat-form-field class="SimpleInput">
+        <mat-label>Street Address</mat-label>
+        <input type="text" matInput formControlName="Address">
+        <mat-error *ngIf='Element("Address")'>
+              Please enter a Street Address
+            </mat-error>
+      </mat-form-field>
     <div class="ElementTwo">
-      <div class="SimpleInput">
-        <label>City</label>
-        <input type='text' id='city' formControlName='city' />
-      </div>
-      <div class="SimpleInput">
-        <label>Post Code</label>
-        <input type='text' id='postCode' formControlName='postCode' />
-      </div>
+      <mat-form-field class="SimpleInput">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName='city'>
+        <mat-error *ngIf='Element("city")'>
+              Please enter a City
+            </mat-error>
+      </mat-form-field>
+      <mat-form-field class="SimpleInput">
+        <mat-label>Post Code</mat-label>
+        <input type="text" matInput formControlName='postCode'>
+        <mat-error *ngIf='Element("postCode")'>
+              Please enter a Post Code
+            </mat-error>
+      </mat-form-field>
     </div>
-    <div class="SimpleInput">
-      <label>Country</label>
-      <input type='text' id='country' formControlName='country' />
-    </div>
+    <mat-form-field class="SimpleInput">
+      <mat-label>Country</mat-label>
+      <input type="text" matInput formControlName='country'>
+      <mat-error *ngIf='Element("country")'>
+            Please enter a Country
+          </mat-error>
+    </mat-form-field>
     <h3>Bill To</h3>
-    <div class="SimpleInput">
-      <label>Client's Name</label>
-      <input type='text' id='ClientName' formControlName='ClientName' />
-    </div>
-    <div class="SimpleInput">
-      <label>Client's Email</label>
-      <input type='text' id='ClientEmail' formControlName='ClientEmail' />
-    </div>
-    <div class="SimpleInput">
-      <label>Street Address</label>
-      <input type='text' id='ClientAddress' formControlName='ClientAddress' />
-    </div>
+    <mat-form-field class="SimpleInput">
+      <mat-label>Client's Name</mat-label>
+      <input type="text" matInput formControlName='ClientName'>
+      <mat-error *ngIf='Element("ClientName")'>
+            Please enter a Client's Name
+          </mat-error>
+    </mat-form-field>
+    <mat-form-field class="SimpleInput">
+      <mat-label>Street Address</mat-label>
+      <input type="text" matInput formControlName='ClientAddress'>
+      <mat-error *ngIf='Element("ClientAddress")'>
+            Please enter a Street Address
+          </mat-error>
+    </mat-form-field>
     <div class="ElementTwo">
-      <div class="SimpleInput">
-        <label>City</label>
-        <input type='text' id='ClientCity' formControlName='ClientCity' />
-      </div>
-      <div class="SimpleInput">
-        <label>Post Code</label>
-        <input type='text' id='ClientCode' formControlName='ClientCode' />
-      </div>
+      <mat-form-field class="SimpleInput">
+        <mat-label>City</mat-label>
+        <input type="text" matInput formControlName='ClientCity'>
+        <mat-error *ngIf='Element("ClientCity")'>
+              Please enter a City
+            </mat-error>
+      </mat-form-field>
+      <mat-form-field class="SimpleInput">
+        <mat-label>Post Code</mat-label>
+        <input type="text" matInput formControlName='ClientCode'>
+        <mat-error *ngIf='Element("ClientCode")'>
+              Please enter a Post Code
+            </mat-error>
+      </mat-form-field>
     </div>
-    <div class="SimpleInput">
-      <label>Country</label>
-      <input type='text' id='ClientCountry' formControlName='ClientCountry' />
-    </div>
-    <div class="SimpleInput">
-      <label>Invoice Date</label>
-      <input class="DateInput" type='date' id='ClientCountry' formControlName='Date' />
-    </div>
-    <div class="SimpleInput">
-      <label>Payment Terms</label>
-      <select formControlName='PayTerms'>
-        <option value="1">Net 1 Days</option>
-        <option value="7">Net 7 Days</option>
-        <option value="14">Net 14 Days</option>
-        <option value="30">Net 30 Days</option>
-      </select>
-    </div>
-    <div class="SimpleInput">
-      <label>Project Description</label>
-      <input type='text' id='description' formControlName='description' />
-    </div>
+    <mat-form-field class="SimpleInput">
+      <mat-label>Country</mat-label>
+      <input type="text" matInput formControlName='ClientCountry'>
+      <mat-error *ngIf='Element("ClientCountry")'>
+            Please enter a Country
+          </mat-error>
+    </mat-form-field>
+    <mat-form-field color="accent" appearance="fill" class="SimpleInput">
+      <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName='Date'>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+        <mat-error *ngIf='Element("Date")'>
+          Please enter a Post Code
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="SimpleInput">
+      <mat-label>Payment Terms</mat-label>
+      <mat-select formControlName='PayTerms' required>
+        <mat-option>--</mat-option>
+        <mat-option [value]="1">Net 1 Days</mat-option>
+        <mat-option [value]="7">Net 7 Days</mat-option>
+        <mat-option [value]="14">Net 14 Days</mat-option>
+        <mat-option [value]="30">Net 30 Days</mat-option>
+      </mat-select>
+      <mat-error *ngIf='Element("PayTerms")'>Please choose an Payment</mat-error>
+    </mat-form-field>
+    <mat-form-field class="SimpleInput" appearance="fill">
+      <mat-label>Project Description</mat-label>
+      <textarea matInput placeholder="Ex. It makes me feel..." formControlName='description'></textarea>
+      <mat-error *ngIf='Element("description")'>
+        Please enter a Project Description
+      </mat-error>
+    </mat-form-field>
     <h3>Item List</h3>
     <div class="AddContainer" *ngFor='let elemet of ItemList; let i = index'>
-      <div class="SimpleInput">
-        <label>Item Name</label>
-        <input type='text' id='ClientCountry' [(ngModel)]='ItemList[i].itemName'
-          [ngModelOptions]="{standalone: true}" />
-      </div>
-      <div class="ElementTwo">
-        <div class="SimpleInput">
-          <label>Qty.</label>
-          <input type='number' id='Qty' [(ngModel)]='ItemList[i].Qty' [ngModelOptions]="{standalone: true}" />
-        </div>
-        <div class="SimpleInput">
-          <label>Price</label>
-          <input type='number' id='Price' [(ngModel)]='ItemList[i].Price' [ngModelOptions]="{standalone: true}" />
-        </div>
-        <img (click)='deleteItem(i)' src='./assets/images/icon-delete.svg' alt='Delete' />
+      <mat-form-field class="SimpleInput">
+        <mat-label>Item Name</mat-label>
+        <input type="text" matInput [(ngModel)]='ItemList[i].itemName' [ngModelOptions]="{standalone: true}">
+      </mat-form-field>
+      <div class="ElementThree">
+        <mat-form-field class="SimpleInput">
+          <mat-label>Qty.</mat-label>
+          <input type="text" matInput [(ngModel)]='ItemList[i].Qty' [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <mat-form-field class="SimpleInput">
+          <mat-label>Price</mat-label>
+          <input type="text" matInput [(ngModel)]='ItemList[i].Price' [ngModelOptions]="{standalone: true}">
+        </mat-form-field>
+        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)='deleteItem(i)'>
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
     </div>
     <button type='button' (click)='AddNewItem()' class="AddNewItem">+Add New Item</button>

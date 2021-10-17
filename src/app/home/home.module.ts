@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ErrorTailorModule} from '@ngneat/error-tailor';
 import { DetailsMainComponent } from './components/details-main/details-main.component';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -25,16 +26,7 @@ import { DetailsMainComponent } from './components/details-main/details-main.com
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    ErrorTailorModule.forRoot({
-      errors: {
-        useValue: {
-          required: 'This field is required',
-          minlength: ({ requiredLength, actualLength }) =>
-                      `Expect ${requiredLength} but got ${actualLength}`,
-          invalidAddress: error => `Address isn't valid`
-        }
-      }
-    })
+    MatNativeDateModule
   ]
 })
 export class HomeModule { }
