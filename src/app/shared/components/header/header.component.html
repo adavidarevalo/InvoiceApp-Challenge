@@ -10,6 +10,7 @@
         (click)="ChangeBackground()"
         >
             <img 
+            class="BackgroundButton"
             *ngIf='!BackgrondColor; else sunButton'
             src='./assets/images/icon-moon.svg' 
             alt='Moon'/>

@@ -48,7 +48,6 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
     if(this.edit){
       this.ItemList = this.edit[0].ItemList ? this.edit[0].ItemList : this.ItemList
     }
-    this.element()
   }
   generateId(){
     if(this.edit){
@@ -63,14 +62,18 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.error = false
     }, 3000);
-    this.formCreate.value.state = state
-    this.createNew()
+    if(!this.edit){
+      this.formCreate.value.state = state
+      this.createNew()
+    } else {
+      this.editElement()
+    }
   }
   closeForm(){
-    this.formCreate.reset()
     this.NewElement.emit(false);
     if(!this.edit){
       this.changeId()
+      this.formCreate.reset()
     }
   }
   changeId(){
@@ -88,14 +91,18 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
   deleteItem(i: number){
     this.ItemList.splice(i, 1)
   }
-  createNew(){
+  editElement(){
     if(!this.error && this.edit){
-      this.formCreate.value.id = this.edit[0].id
-      this.formCreate.value.ItemList = this.ItemList
-      this.cardService.edit(this.formCreate.value)
-      this.SendChanges.emit(this.formCreate.value);
-      this.closeForm()
-    } else if(!this.error){
+    this.formCreate.value.id = this.edit[0].id
+    this.formCreate.value.state = this.edit[0].state
+    this.formCreate.value.ItemList = this.ItemList
+    this.cardService.edit(this.formCreate.value)
+    this.SendChanges.emit(this.formCreate.value);
+    this.closeForm()
+    }
+  }
+  createNew(){
+    if(!this.error){
       this.formCreate.value.id = this.id
       this.formCreate.value.ItemList = this.ItemList
       this.cardService.add(this.formCreate.value)
@@ -105,12 +112,8 @@ export class CreateNewProductComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.elementSubscribe$.unsubscribe()
   }
-  Element(name: string){
+  ElementValidator(name: string){
     return `formCreate.controls.${name}.touched && formCreate.controls.${name}.invalid`
-  }
-  element(){
-    console.log('ew ', this.formCreate.status === 'VALID')
-    console.log('xxx ', this.ItemList[0].itemName)
   }
   formContainer(){
     return {

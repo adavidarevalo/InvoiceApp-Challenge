@@ -44,6 +44,9 @@ header{
             padding-right: 10px;
             cursor: pointer;
         }
+        .BackgroundButton:hover{
+            filter: invert(.5);
+        }
         .Avatar{
             width: 50px;
             border-radius: 50px;

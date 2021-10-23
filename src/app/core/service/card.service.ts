@@ -20,7 +20,6 @@ export class CardService {
     this.products = this.products.filter(item => item.id !== Id)
   }
   changeStatus(Id: string){
-    console.log('true babe')
     this.products.filter(item => item.id === Id && (item.state = 'paid'))
   }
   add(element: Element){

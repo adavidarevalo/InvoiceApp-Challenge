@@ -11,7 +11,7 @@
       <mat-form-field class="SimpleInput">
         <mat-label>Street Address</mat-label>
         <input type="text" matInput formControlName="Address">
-        <mat-error *ngIf='Element("Address")'>
+        <mat-error *ngIf='ElementValidator("Address")'>
               Please enter a Street Address
             </mat-error>
       </mat-form-field>
@@ -19,14 +19,14 @@
       <mat-form-field class="SimpleInput">
         <mat-label>City</mat-label>
         <input type="text" matInput formControlName='city'>
-        <mat-error *ngIf='Element("city")'>
+        <mat-error *ngIf='ElementValidator("city")'>
               Please enter a City
             </mat-error>
       </mat-form-field>
       <mat-form-field class="SimpleInput">
         <mat-label>Post Code</mat-label>
         <input type="text" matInput formControlName='postCode'>
-        <mat-error *ngIf='Element("postCode")'>
+        <mat-error *ngIf='ElementValidator("postCode")'>
               Please enter a Post Code
             </mat-error>
       </mat-form-field>
@@ -34,7 +34,7 @@
     <mat-form-field class="SimpleInput">
       <mat-label>Country</mat-label>
       <input type="text" matInput formControlName='country'>
-      <mat-error *ngIf='Element("country")'>
+      <mat-error *ngIf='ElementValidator("country")'>
             Please enter a Country
           </mat-error>
     </mat-form-field>
@@ -42,14 +42,21 @@
     <mat-form-field class="SimpleInput">
       <mat-label>Client's Name</mat-label>
       <input type="text" matInput formControlName='ClientName'>
-      <mat-error *ngIf='Element("ClientName")'>
+      <mat-error *ngIf='ElementValidator("ClientName")'>
             Please enter a Client's Name
+          </mat-error>
+    </mat-form-field>
+    <mat-form-field class="SimpleInput">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName='ClientEmail'>
+      <mat-error *ngIf='ElementValidator("ClientEmail")'>
+            Please enter a Email
           </mat-error>
     </mat-form-field>
     <mat-form-field class="SimpleInput">
       <mat-label>Street Address</mat-label>
       <input type="text" matInput formControlName='ClientAddress'>
-      <mat-error *ngIf='Element("ClientAddress")'>
+      <mat-error *ngIf='ElementValidator("ClientAddress")'>
             Please enter a Street Address
           </mat-error>
     </mat-form-field>
@@ -57,14 +64,14 @@
       <mat-form-field class="SimpleInput">
         <mat-label>City</mat-label>
         <input type="text" matInput formControlName='ClientCity'>
-        <mat-error *ngIf='Element("ClientCity")'>
+        <mat-error *ngIf='ElementValidator("ClientCity")'>
               Please enter a City
             </mat-error>
       </mat-form-field>
       <mat-form-field class="SimpleInput">
         <mat-label>Post Code</mat-label>
         <input type="text" matInput formControlName='ClientCode'>
-        <mat-error *ngIf='Element("ClientCode")'>
+        <mat-error *ngIf='ElementValidator("ClientCode")'>
               Please enter a Post Code
             </mat-error>
       </mat-form-field>
@@ -72,7 +79,7 @@
     <mat-form-field class="SimpleInput">
       <mat-label>Country</mat-label>
       <input type="text" matInput formControlName='ClientCountry'>
-      <mat-error *ngIf='Element("ClientCountry")'>
+      <mat-error *ngIf='ElementValidator("ClientCountry")'>
             Please enter a Country
           </mat-error>
     </mat-form-field>
@@ -81,7 +88,7 @@
         <input matInput [matDatepicker]="picker2" formControlName='Date'>
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2 color="primary"></mat-datepicker>
-        <mat-error *ngIf='Element("Date")'>
+        <mat-error *ngIf='ElementValidator("Date")'>
           Please enter a Post Code
         </mat-error>
     </mat-form-field>
@@ -94,12 +101,12 @@
         <mat-option [value]="14">Net 14 Days</mat-option>
         <mat-option [value]="30">Net 30 Days</mat-option>
       </mat-select>
-      <mat-error *ngIf='Element("PayTerms")'>Please choose an Payment</mat-error>
+      <mat-error *ngIf='ElementValidator("PayTerms")'>Please choose an Payment</mat-error>
     </mat-form-field>
     <mat-form-field class="SimpleInput" appearance="fill">
       <mat-label>Project Description</mat-label>
       <textarea matInput placeholder="Ex. It makes me feel..." formControlName='description'></textarea>
-      <mat-error *ngIf='Element("description")'>
+      <mat-error *ngIf='ElementValidator("description")'>
         Please enter a Project Description
       </mat-error>
     </mat-form-field>
@@ -128,7 +135,8 @@
     <div class="FooterForm">
       <button (click)='closeForm()'>Discard</button>
       <button class="Draft" (click)='send("draft")' *ngIf="!edit">Save as Draft</button>
-      <input type='submit' value="Send">
+      <input *ngIf='!edit' type='submit' value="Send">
+      <input *ngIf='edit' type='submit' value="Edit">
     </div>
   </form>
 </div>

@@ -24,6 +24,9 @@ nav{
             button{
                 background: none;
                 color: black;
+                cursor: pointer;
+                border: none;
+                margin-right: 20px;
                 img{
                     margin-left: 10px;
                     transform: rotate(0deg);
@@ -51,7 +54,7 @@ nav{
                 opacity: 1;
             }
         }
-        button{
+        .ButtonNew{
             background: #7C5DFA;
             border: none;
             color: white;
@@ -60,6 +63,8 @@ nav{
             padding: 10px 15px 10px 10px; 
             border-radius: 50px;
             align-items: center;
+            cursor: pointer;
+            border: 1px solid #7C5DFA;
             div{
                 background: white;
                 border-radius: 50%;
@@ -74,6 +79,10 @@ nav{
                     height: 10px;
                 }
             }
+            &:hover{
+                box-shadow: 3px 3px 20px 1px #7c5dfa6b;
+                border: 1px solid white;
+            }
         }
     }
 }
@@ -84,6 +93,9 @@ nav{
             button{
                 color: white;
             } 
+            div{
+                color: gray;
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ a{
     box-shadow: 2px 2px 7px 1px rgba(0, 0, 0, 0.2);
     margin-bottom: 25px;
     transition: all 1s ease;
+    border: 1px solid white;
     &:hover{
         border:1px solid #7C5DFA;
     }
@@ -119,6 +120,7 @@ a{
 .changeBackground{
     background: #1F2139;
     color: white;
+    border: 1px solid #1F2139;
     p{
         color: white;
     }

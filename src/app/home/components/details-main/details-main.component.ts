@@ -60,7 +60,7 @@ export class DetailsMainComponent implements OnInit, OnDestroy {
     this.elementSubscribe$.unsubscribe()
   }
   ChangeElement(NewItem : Element ){
-    this.element = NewItem
+    this.element = [NewItem]
   }
 
 }
